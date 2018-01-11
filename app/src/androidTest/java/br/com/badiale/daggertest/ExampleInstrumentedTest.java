@@ -7,7 +7,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
@@ -16,6 +17,9 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void useAppContext() throws Exception {
-        assertTrue("injection did not work", activityActivityTestRule.getActivity().worked());
+        final MainActivity activity = activityActivityTestRule.getActivity();
+        assertNotNull("injection did not work", activity.service);
+        assertNotNull("context not injected", activity.service.getContext());
+        assertEquals("wrong context injected", activity, activity.service.getContext());
     }
 }
