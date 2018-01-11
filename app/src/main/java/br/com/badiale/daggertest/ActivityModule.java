@@ -10,4 +10,7 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract Main2Activity contributeMain2ActivityInjector();
+
+    @ContributesAndroidInjector
+    abstract NotificationActivity contributeNotificationActivityInjector();
 }

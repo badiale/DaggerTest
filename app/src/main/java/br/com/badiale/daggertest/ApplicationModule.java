@@ -1,6 +1,7 @@
 package br.com.badiale.daggertest;
 
 import android.content.Context;
+import android.support.v4.app.NotificationManagerCompat;
 
 import dagger.Module;
 import dagger.Provides;
@@ -16,5 +17,10 @@ class ApplicationModule {
     @Provides
     Context provideContext() {
         return context;
+    }
+
+    @Provides
+    NotificationManagerCompat notificationManagerCompat() {
+        return NotificationManagerCompat.from(context);
     }
 }
