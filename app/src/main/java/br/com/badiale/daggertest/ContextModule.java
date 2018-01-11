@@ -7,9 +7,15 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class ApplicationModule {
+class ContextModule {
+    private final Context context;
+
+    ContextModule(Context context) {
+        this.context = context;
+    }
+
     @Provides
-    NotificationManagerCompat notificationManagerCompat(Context context) {
-        return NotificationManagerCompat.from(context);
+    Context provideContext() {
+        return context;
     }
 }

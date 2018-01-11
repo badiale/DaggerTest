@@ -17,7 +17,7 @@ public class MyApplication extends Application implements HasActivityInjector {
     public void onCreate() {
         super.onCreate();
         DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
+                .contextModule(new ContextModule(this))
                 .build()
                 .inject(this);
     }
