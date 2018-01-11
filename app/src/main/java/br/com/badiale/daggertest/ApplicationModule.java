@@ -2,18 +2,19 @@ package br.com.badiale.daggertest;
 
 import android.content.Context;
 
-import javax.inject.Inject;
+import dagger.Module;
+import dagger.Provides;
 
-public class Service {
-
+@Module
+class ApplicationModule {
     private final Context context;
 
-    @Inject
-    public Service(final Context context) {
+    ApplicationModule(MyApplication context) {
         this.context = context;
     }
 
-    public Context getContext() {
+    @Provides
+    Context provideContext() {
         return context;
     }
 }

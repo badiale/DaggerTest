@@ -20,6 +20,6 @@ public class ExampleInstrumentedTest {
         final MainActivity activity = activityActivityTestRule.getActivity();
         assertNotNull("injection did not work", activity.service);
         assertNotNull("context not injected", activity.service.getContext());
-        assertEquals("wrong context injected", activity, activity.service.getContext());
+        assertEquals("wrong context injected", activity.getApplicationContext(), activity.service.getContext());
     }
 }
