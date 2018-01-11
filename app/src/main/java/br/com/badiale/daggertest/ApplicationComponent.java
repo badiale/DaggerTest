@@ -4,7 +4,7 @@ import dagger.Component;
 
 @Component(modules = {
         ApplicationModule.class,
-        MainActivityModule.class
+        ActivityModule.class
 })
 public interface ApplicationComponent {
     void inject(MyApplication myApplication);

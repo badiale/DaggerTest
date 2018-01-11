@@ -13,11 +13,22 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
     @Rule
-    public ActivityTestRule<MainActivity> activityActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(MainActivity.class);
+
+    @Rule
+    public ActivityTestRule<Main2Activity> main2ActivityRule = new ActivityTestRule<>(Main2Activity.class);
 
     @Test
-    public void useAppContext() throws Exception {
-        final MainActivity activity = activityActivityTestRule.getActivity();
+    public void shouldInjectOnMainActivity() throws Exception {
+        final MainActivity activity = mainActivityRule.getActivity();
+        assertNotNull("injection did not work", activity.service);
+        assertNotNull("context not injected", activity.service.getContext());
+        assertEquals("wrong context injected", activity.getApplicationContext(), activity.service.getContext());
+    }
+
+    @Test
+    public void shouldInjectOnMain2Activity() throws Exception {
+        final Main2Activity activity = main2ActivityRule.getActivity();
         assertNotNull("injection did not work", activity.service);
         assertNotNull("context not injected", activity.service.getContext());
         assertEquals("wrong context injected", activity.getApplicationContext(), activity.service.getContext());
